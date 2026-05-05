@@ -42,7 +42,7 @@ class Testimonial extends Component{
                                 </div>
                             </TabPanel>
 
-                            <TabPanel>
+                            {/* <TabPanel>
                                 <div className="rn-testimonial-content text-center">
                                     <div className="inner">
                                         <p>Nuestro website Tour Colorada es dinámico, auto gestionable y se integra con nuestras redes sociales.</p>
@@ -52,7 +52,7 @@ class Testimonial extends Component{
                                         <h5><span><a target="blank" href="http://www.tour-colorada.com/">Tour Colorada</a></span></h5>
                                     </div>
                                 </div>
-                            </TabPanel>
+                            </TabPanel> */}
                             <TabPanel>
                                 <div className="rn-testimonial-content text-center">
                                     <div className="inner">
@@ -121,13 +121,13 @@ class Testimonial extends Component{
                                         </div>
                                     </div>
                                 </Tab>
-                                <Tab>
+                                {/* <Tab>
                                     <div className="testimonial-thumbnai">
                                         <div className="thumb">
                                             <img src="/assets/images/client/testimonial-4.png" alt="Testimonial Images"/>
                                         </div>
                                     </div>
-                                </Tab>
+                                </Tab> */}
                                 <Tab>
                                     <div className="testimonial-thumbnai">
                                         <div className="thumb">
