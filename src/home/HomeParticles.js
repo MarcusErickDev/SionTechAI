@@ -29,37 +29,37 @@ const SlideList = [
 const list = [
     {
         image: 'image-1',
-        link: '/carpetman-website',
+        link: 'https://thecartpetmancompany.netlify.app/',
         category: 'The Carpetman Company LLC',
         title: 'Diseño y Desarrollo de Sitio WEB'
     },
     {
         image: 'image-2',
-        link: '/kimdesign-website',
+        link: 'https://kim-design.com.mx/',
         category: 'Kim Design SA de CV',
         title: 'Diseño y Desarrollo de Sitio WEB'
     },
     {
         image: 'image-3',
-        link: '/eagle-website',
+        link: 'https://eagleconcrete.netlify.app/',
         category: 'Eagle Concrete Construction & Excavation LLC',
         title: 'Diseño y Desarrollo de Sitio WEB'
     },
     {
         image: 'image-4',
-        link: '/tourcolorada-website',
-        category: 'El Último y Viajamos SAS de CV',
+        link: 'https://deltacyd.netlify.app/',
+        category: 'Construcción y Decoración Delta SA de CV',
         title: 'Diseño y Desarrollo de Sitio WEB'
     },
     {
         image: 'image-5',
-        link: '/racksare-website',
+        link: '/#portfolio',
         category: 'Fabricantes de Racks y Estantería ARE SA de CV',
         title: 'Desarrollo de Sistema IT'
     },
     {
         image: 'image-6',
-        link: 'solucionesur-website',
+        link: 'https://www.soluciones-ur.com/',
         category: 'Soluciones Urbina SAS de CV',
         title: 'Diseño y Desarrollo de Sitio WEB'
     }
