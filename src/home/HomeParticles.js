@@ -3,14 +3,14 @@ import Slider from "react-slick";
 import { slickDot } from "../page-demo/script";
 import Scrollspy from 'react-scrollspy';
 import ScrollToTop from 'react-scroll-up';
-import Particles from 'react-particles-js';
 import { FiChevronUp , FiX , FiMenu } from "react-icons/fi";
+import ParticlesLinksFallback from "../elements/ParticlesLinksFallback";
 import ServiceList from "../elements/service/ServiceList";
 import CounterOne from "../elements/counters/CounterOne";
 import Testimonial from "../elements/Testimonial";
-import Team from "../elements/Team";
+// import Team from "../elements/Team";
 import BlogContent from "../elements/blog/BlogContent";
-import BrandTwo from "../elements/BrandTwo";
+// import BrandTwo from "../elements/BrandTwo";
 import FooterTwo from "../component/footer/FooterTwo";
 import Contact from "../elements/contact/ContactTwo";
 import Helmet from "../component/common/Helmet";
@@ -158,26 +158,7 @@ class HomeParticles extends Component{
                 
                 <div className="slider-activation slider-creative-agency with-particles" id="home">
                     <div className="frame-layout__particles">
-                        <Particles
-                            params={{
-                                "particles": {
-                                    "number": {
-                                        "value": 54
-                                    },
-                                    "size": {
-                                        "value": 4
-                                    }
-                                },
-                                "interactivity": {
-                                    "events": {
-                                        "onhover": {
-                                            "enable": true,
-                                            "mode": "repulse"
-                                        }
-                                    }
-                                }
-                            }}
-                        />
+                        <ParticlesLinksFallback count={54} />
                     </div>
                     <div className="bg_image bg_image--27">
                             {SlideList.map((value , index) => (
