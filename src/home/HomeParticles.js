@@ -3,14 +3,14 @@ import Slider from "react-slick";
 import { slickDot } from "../page-demo/script";
 import Scrollspy from 'react-scrollspy';
 import ScrollToTop from 'react-scroll-up';
-import Particles from 'react-particles-js';
 import { FiChevronUp , FiX , FiMenu } from "react-icons/fi";
+import ParticlesLinksFallback from "../elements/ParticlesLinksFallback";
 import ServiceList from "../elements/service/ServiceList";
 import CounterOne from "../elements/counters/CounterOne";
 import Testimonial from "../elements/Testimonial";
-import Team from "../elements/Team";
+// import Team from "../elements/Team";
 import BlogContent from "../elements/blog/BlogContent";
-import BrandTwo from "../elements/BrandTwo";
+// import BrandTwo from "../elements/BrandTwo";
 import FooterTwo from "../component/footer/FooterTwo";
 import Contact from "../elements/contact/ContactTwo";
 import Helmet from "../component/common/Helmet";
@@ -22,7 +22,7 @@ const SlideList = [
         title: 'Sion Tech',
         description: 'Combinamos la belleza y perfección del arte con la modernidad y funcionalidad de la tecnología.',
         buttonText: 'Contáctanos',
-        buttonLink: '/home-particles#contact'
+        buttonLink: '/#contact'
     }
 ]
 
@@ -116,7 +116,7 @@ class HomeParticles extends Component{
                     <div className="header-wrapper" id="header-wrapper">
                         <div className="header-left">
                             <div className="logo">
-                                <a href="/home-particles">
+                                <a href="/">
                                     {/* <img className="logo-1" src="/assets/images/logo/logo-light.png" alt="Logo Images"/> */}
                                     <img className="logo-1" src="/assets/images/logo/siontech-logo-gra.png" alt="Logo Images"/>
                                     <img className="logo-2" src="/assets/images/logo/siontech-logo.png" alt="Logo Images"/>
@@ -158,26 +158,7 @@ class HomeParticles extends Component{
                 
                 <div className="slider-activation slider-creative-agency with-particles" id="home">
                     <div className="frame-layout__particles">
-                        <Particles
-                            params={{
-                                "particles": {
-                                    "number": {
-                                        "value": 54
-                                    },
-                                    "size": {
-                                        "value": 4
-                                    }
-                                },
-                                "interactivity": {
-                                    "events": {
-                                        "onhover": {
-                                            "enable": true,
-                                            "mode": "repulse"
-                                        }
-                                    }
-                                }
-                            }}
-                        />
+                        <ParticlesLinksFallback count={50} />
                     </div>
                     <div className="bg_image bg_image--27">
                             {SlideList.map((value , index) => (
@@ -206,7 +187,7 @@ class HomeParticles extends Component{
                         <div className="row">
                             <div className="col-lg-6 col-12">
                                 <div className="section-title text-left mb--30 service-style--3 mb_sm--0">
-                                    <h2 className="title">Servicios</h2>
+                                    <h2 className="title theme-gradient">Servicios</h2>
                                     <p>Somos una empresa dedicada al diseño y desarrollo de APP's, Sitios Web, Sistemas Web y Servicios IT.</p>
                                 </div>
                             </div>
@@ -233,7 +214,7 @@ class HomeParticles extends Component{
                                 <div className="col-lg-7">
                                     <div className="about-inner inner">
                                         <div className="section-title">
-                                            <h2 className="title">Acerca de</h2>
+                                            <h2 className="title theme-gradient">Acerca de</h2>
                                             <p className="description"><a href="#portfolio">SionTech</a> Es una empresa de tecnología que busca satisfacer las necesidades de manejo de información en un negocio por medio de la implementación y/o desarrollo de una solución informática.</p>
                                         </div>
                                         <div className="row mt--30">
@@ -265,7 +246,7 @@ class HomeParticles extends Component{
                             <div className="row">
                                 <div className="col-lg-6">
                                     <div className="section-title service-style--3 text-left mb--15 mb_sm--0">
-                                        <h2 className="title">Proyectos</h2>
+                                        <h2 className="title theme-gradient">Proyectos</h2>
                                         <p>En SionTech tenemos como proposito servirte de la mejor manera posible, empleando todo nuestro conocimiento y recursos para poder darte la calidad que esperas en tus proyectos.</p>
                                     </div>
                                 </div>

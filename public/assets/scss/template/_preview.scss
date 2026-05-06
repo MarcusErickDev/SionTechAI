@@ -30,6 +30,35 @@
         z-index: 2;
         top: 0;
         left: 0;
+        pointer-events: none;
+        overflow: hidden;
+        /* Temporary CSS-only particles fallback until React/Webpack stack is upgraded. */
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            inset: -25%;
+            background-repeat: repeat;
+            will-change: transform;
+        }
+        &::before {
+            opacity: 0.45;
+            background-image:
+                radial-gradient(circle, rgba(255, 255, 255, 0.75) 2px, transparent 2.5px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.5) 1.5px, transparent 2px);
+            background-size: 140px 140px, 110px 110px;
+            background-position: 0 0, 55px 30px;
+            animation: particleDriftPreview 36s linear infinite;
+        }
+        &::after {
+            opacity: 0.35;
+            background-image:
+                radial-gradient(circle, rgba(255, 255, 255, 0.75) 2px, transparent 2.5px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.45) 1.5px, transparent 2px);
+            background-size: 170px 170px, 130px 130px;
+            background-position: 30px 80px, 75px 15px;
+            animation: particleDriftReversePreview 52s linear infinite;
+        }
         @media #{$large-mobile} {
             display: none;
         }
@@ -37,6 +66,24 @@
     .inner{
         position: relative;
         z-index: 3;
+    }
+}
+
+@keyframes particleDriftPreview {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-90px, -130px, 0);
+    }
+}
+
+@keyframes particleDriftReversePreview {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(100px, 80px, 0);
     }
 }
 
