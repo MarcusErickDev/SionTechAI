@@ -17,7 +17,7 @@ class ContactTwo extends Component{
                     <div className="row row--35 align-items-start">
                         <div className="col-lg-6 order-2 order-lg-1">
                             <div className="section-title text-left mb--50">
-                                <h2 className="title">Contacto.</h2>
+                                <h2 className="title theme-gradient">Contacto.</h2>
                                 <p className="description">Permanece en contacto con nosotros.</p>
                             </div>
                             <div className="form-wrapper">

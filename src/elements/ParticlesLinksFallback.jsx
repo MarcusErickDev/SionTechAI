@@ -20,10 +20,11 @@ const ParticlesLinksFallback = ({ count = 54 }) => {
 
         const mouse = { x: -9999, y: -9999, active: false };
         const particles = [];
-        const linkDistance = 100;
-        const repulseDistance = 290;
+        const linkDistance = 190;
+        const repulseDistance = 200;
+        const wanderStrength = 0.01;
 
-        const randomVelocity = () => (Math.random() - 0.5) * 0.45;
+        const randomVelocity = () => (Math.random() - 0.5) * 0.9;
 
         const createParticle = () => ({
             x: Math.random() * width,
@@ -76,6 +77,8 @@ const ParticlesLinksFallback = ({ count = 54 }) => {
 
             for (let i = 0; i < particles.length; i += 1) {
                 const p = particles[i];
+                p.vx += (Math.random() - 0.5) * wanderStrength;
+                p.vy += (Math.random() - 0.5) * wanderStrength;
 
                 if (mouse.active) {
                     const dxm = p.x - mouse.x;
@@ -88,22 +91,20 @@ const ParticlesLinksFallback = ({ count = 54 }) => {
                     }
                 }
 
-                p.vx *= 0.985;
-                p.vy *= 0.985;
+                p.vx *= 0.99;
+                p.vy *= 0.99;
                 p.x += p.vx;
                 p.y += p.vy;
 
-                if (p.x <= 0 || p.x >= width) p.vx *= -1;
-                if (p.y <= 0 || p.y >= height) p.vy *= -1;
-
-                p.x = Math.min(width, Math.max(0, p.x));
-                p.y = Math.min(height, Math.max(0, p.y));
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = "rgba(255, 255, 255, 0.65)";
-                ctx.fill();
+                // Wrap instead of bounce to avoid "go and come back" motion patterns.
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
             }
+
+            const connectionCounts = new Array(particles.length).fill(0);
+            const lines = [];
 
             for (let i = 0; i < particles.length; i += 1) {
                 const a = particles[i];
@@ -113,15 +114,32 @@ const ParticlesLinksFallback = ({ count = 54 }) => {
                     const dy = a.y - b.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < linkDistance) {
-                        const alpha = (1 - dist / linkDistance) * 0.35;
-                        ctx.beginPath();
-                        ctx.moveTo(a.x, a.y);
-                        ctx.lineTo(b.x, b.y);
-                        ctx.strokeStyle = "rgba(255, 255, 255, " + alpha + ")";
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
+                        const alpha = Math.max(0.2, (1 - dist / linkDistance) * 0.6);
+                        connectionCounts[i] += 1;
+                        connectionCounts[j] += 1;
+                        lines.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, alpha: alpha });
                     }
                 }
+            }
+
+            for (let i = 0; i < particles.length; i += 1) {
+                if (connectionCounts[i] > 0) {
+                    const p = particles[i];
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.65)";
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < lines.length; i += 1) {
+                const line = lines[i];
+                ctx.beginPath();
+                ctx.moveTo(line.ax, line.ay);
+                ctx.lineTo(line.bx, line.by);
+                ctx.strokeStyle = "rgba(255, 255, 255, " + line.alpha + ")";
+                ctx.lineWidth = 1.1;
+                ctx.stroke();
             }
 
             rafRef.current = window.requestAnimationFrame(draw);
